@@ -4,10 +4,11 @@ const env = process.env.NODE_ENV || 'development';
 const config = require('../../config/config')[env];
 
 const userModels = require('./user');
+const categoryModels = require('./category');
 
 const db = {};
 
-const models = [userModels];
+const models = [categoryModels, userModels];
 
 let sequelize;
 if (config.use_env_variable) {
