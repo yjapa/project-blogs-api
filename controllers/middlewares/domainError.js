@@ -3,6 +3,7 @@ module.exports = (err, _req, res, next) => {
     registeredUser: 409,
     wrongFields: 400,
     emptyToken: 401,
+    notFound: 404,
   };
 
   const status = errorMap[err.code];

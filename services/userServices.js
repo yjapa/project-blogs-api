@@ -52,8 +52,23 @@ const login = async (email, password) => {
 
 const getAllUsers = async () => userModels.getAllUsers();
 
+const getUserById = async (id) => {
+  const user = await userModels.getUserById(id);
+
+  if (!user) {
+    const error = {
+      code: 'notFound',
+      message: 'User does not exist',
+    };
+    throw error;
+  }
+
+  return user;
+};
+
 module.exports = {
   createUser,
   login,
   getAllUsers,
+  getUserById,
 };
