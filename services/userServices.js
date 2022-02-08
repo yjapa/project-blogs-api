@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { User } = require('../models');
+const userModels = require('../models/userModels');
 
 const { JWT_SECRET } = process.env;
 const jwtConfig = {
@@ -7,10 +7,8 @@ const jwtConfig = {
   algorithm: 'HS256',
 };
 
-const checkEmailUser = async (email) => User.findOne({ where: { email } });
-
 const createUser = async (displayName, email, password, image) => {
-  const checkEmail = await checkEmailUser(email);
+  const checkEmail = await userModels.findByEmail(email);
 
   if (checkEmail) {
     const error = {
@@ -20,7 +18,7 @@ const createUser = async (displayName, email, password, image) => {
     throw error;
 }
 
-  await User.create({ displayName, email, password, image });
+  await userModels.createUser(displayName, email, password, image);
 
   const payload = {
     displayName,
@@ -32,6 +30,27 @@ const createUser = async (displayName, email, password, image) => {
   return token;
 };
 
+const login = async (email, password) => {
+  const user = await userModels.findByEmail(email);
+
+  if (!user || user.password !== password) { 
+    const error = {
+      code: 'wrongFields',
+      message: 'Invalid fields',
+    };
+    throw error;
+  }
+
+  const payload = {
+    email,
+  };
+
+  const token = jwt.sign(payload, JWT_SECRET, jwtConfig);
+
+  return token;
+};
+
 module.exports = {
   createUser,
+  login,
 };
