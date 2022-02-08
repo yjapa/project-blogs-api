@@ -2,6 +2,7 @@ module.exports = (err, _req, res, next) => {
   const errorMap = {
     registeredUser: 409,
     wrongFields: 400,
+    emptyToken: 401,
   };
 
   const status = errorMap[err.code];

@@ -11,7 +11,6 @@ app.use('/login', loginRouter);
 app.use('/user', userRouter);
 
 app.use(middlewares.domainError);
-
 app.use(middlewares.error);
 
 app.listen(3000, () => console.log('ouvindo porta 3000!'));

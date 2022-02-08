@@ -50,7 +50,10 @@ const login = async (email, password) => {
   return token;
 };
 
+const getAllUsers = async () => userModels.getAllUsers();
+
 module.exports = {
   createUser,
   login,
+  getAllUsers,
 };
