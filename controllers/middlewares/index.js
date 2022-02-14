@@ -2,6 +2,7 @@ const domainError = require('./domainError');
 const error = require('./error');
 const userValidation = require('./userValidation');
 const loginValidation = require('./loginValidation');
+const blogpostValidation = require('./blogpostValidation');
 const auth = require('./auth');
 
 module.exports = {
@@ -10,4 +11,5 @@ module.exports = {
   userValidation,
   loginValidation,
   auth,
+  blogpostValidation,
 };

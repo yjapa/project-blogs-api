@@ -5,10 +5,11 @@ const config = require('../../config/config')[env];
 
 const userModels = require('./user');
 const categoryModels = require('./category');
+const blogPost = require('./blogpost');
 
 const db = {};
 
-const models = [categoryModels, userModels];
+const models = [blogPost, categoryModels, userModels];
 
 let sequelize;
 if (config.use_env_variable) {

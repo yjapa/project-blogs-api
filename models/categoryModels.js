@@ -10,7 +10,10 @@ const getAllCategories = async () => {
   return categories;
 };
 
+const getCategoryById = (id) => Category.findByPk(id);
+
 module.exports = {
   createCategory,
   getAllCategories,
+  getCategoryById,
 };

@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const { userRouter, loginRouter, categoryRouter } = require('./routes');
+const { userRouter, loginRouter, categoryRouter, blogpostRouter } = require('./routes');
 const middlewares = require('./controllers/middlewares');
 
 const app = express();
@@ -10,6 +10,7 @@ app.use(bodyParser.json());
 app.use('/login', loginRouter);
 app.use('/user', userRouter);
 app.use('/categories', categoryRouter);
+app.use('/post', blogpostRouter);
 
 app.use(middlewares.domainError);
 app.use(middlewares.error);
