@@ -3,7 +3,6 @@ const blogpostService = require('../services/blogpostServices');
 const createBlogPost = async (req, res) => {
   const postData = req.body;
   const { id } = req.user;
-  // console.log(postData.categoryIds);
 
   await blogpostService.verifyCategoryIds(postData);
 
@@ -12,6 +11,12 @@ const createBlogPost = async (req, res) => {
   return res.status(201).json(post);
 };
 
+const getBlogPost = async (req, res) => {
+  const posts = await blogpostService.getBlogPost();
+  return res.status(200).json(posts);
+};
+
 module.exports = {
   createBlogPost,
+  getBlogPost,
 };

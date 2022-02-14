@@ -17,7 +17,20 @@ const verifyCategoryIds = async ({ categoryIds }) => {
 const createBlogPost = async ({ title, content }, userId) =>
   blogpostModels.createBlogPost({ title, userId, content });
 
+const postCategories = (postId, categoryArray) => {
+  categoryArray.forEach(async (categoryId) => {
+      await blogpostModels.postsCategories(postId, categoryId);
+  });
+};
+
+const getBlogPost = async () => {
+  const result = await blogpostModels.getBlogPost();
+  return result;
+};
+
 module.exports = {
   verifyCategoryIds,
   createBlogPost,
+  getBlogPost,
+  postCategories,
 };
