@@ -108,4 +108,8 @@ npm start
 ### Listar todos os Posts
 
 * Para listar todos os posts, devemos acessar o endpoint `GET /posts`
-* A requisição deve conter no Header o `token` gerado no login 
+* A requisição deve conter no Header o `token` gerado no login
+
+## Observações:
+
+* Projeto em andamento para melhorias e implementações de mais funcionalidades.
